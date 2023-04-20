@@ -22,13 +22,12 @@
             <center>
               <div class="typo">
                 <h1 class="title blog-title">
-                  A blog title and other stuffs will add here, also we can
-                  incluse.
+                  {{post.title}}
                 </h1>
                 <div class="timeline">
                   <div class="track">
                     <i class="uil uil-clock"></i>
-                    <p class="time">June 10, 2022</p>
+                    <p class="time">{{post.last_updated}}</p>
                   </div>
                   <div class="track">
                     <i class="uil uil-users-alt"></i>
@@ -52,7 +51,7 @@
                 <!-- blog post -->
                 <div class="blog-post">
                   <div class="post-img blog-img">
-                    <img src="../images/post.png" alt="" />
+                    <img src="{{post.image.url}}" alt="" />
                   </div>
                   <div class="blog-post-content">
                     <p>
