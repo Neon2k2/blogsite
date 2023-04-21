@@ -27,11 +27,11 @@
                 <div class="timeline">
                   <div class="track">
                     <i class="uil uil-clock"></i>
-                    <p class="time">{{post.last_updated}}</p>
+                    <p class="time">{{post.last_updated | date}}</p>
                   </div>
                   <div class="track">
                     <i class="uil uil-users-alt"></i>
-                    <p class="view-count">2500+ views</p>
+                    <p class="view-count">{{post.view_count}} view{{post.view_count|pluralize:'s'}}</p>
                   </div>
                   <div class="track">
                     <form action="" method="POST">
@@ -55,67 +55,12 @@
                   </div>
                   <div class="blog-post-content">
                     <p>
-                      If you have invested time, energy and money on creating a
-                      website for your business, you know very well that
-                      nowadays virtually every company must have an online
-                      presence. However, having a great website in place is not
-                      a final goal that you can afford to tick and archive. A
-                      website is never something static, and this is why you
-                      should always keep up with change and continuously improve
-                      it. It would help if you thought of your website as a
-                      salesman who represents your company every day and keeps
-                      an eye on what is happening in the field. Competitors will
-                      adopt new strategies, as the needs of your existing and
-                      potential customers evolve. Therefore, there are many good
-                      reasons why you should invest periodically in re-adapting
-                      your website’s content and functionality.
-                    </p>
-                    <br /><br />
-                    <p>
-                      If you have invested time, energy and money on creating a
-                      website for your business, you know very well that
-                      nowadays virtually every company must have an online
-                      presence. However, having a great website in place is not
-                      a final goal that you can afford to tick and archive. A
-                      website is never something static, and this is why you
-                      should always keep up with change and continuously improve
-                      it. It would help if you thought of your website as a
-                      salesman who represents your company every day and keeps
-                      an eye on what is happening in the field. Competitors will
-                      adopt new strategies, as the needs of your existing and
-                      potential customers evolve. Therefore, there are many good
-                      reasons why you should invest periodically in re-adapting
-                      your website’s content and functionality.
-                    </p>
-                    <br /><br />
-                    <p>
-                      If you have invested time, energy and money on creating a
-                      website for your business, you know very well that
-                      nowadays virtually every company must have an online
-                      presence. However, having a great website in place is not
-                      a final goal that you can afford to tick and archive. A
-                      website is never something static, and this is why you
-                      should always keep up with change and continuously improve
-                      it. It would help if you thought of your website as a
-                      salesman who represents your company every day and keeps
-                      an eye on what is happening in the field. Competitors will
-                      adopt new strategies, as the needs of your existing and
-                      potential customers evolve. Therefore, there are many good
-                      reasons why you should invest periodically in re-adapting
-                      your website’s content and functionality.
+                      {{post.content}}
                     </p>
                     <div class="blog-tags">
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
+                      {% for tag in post.tags.all  %}
+                      <div class="tag">{{tag.name}}</div>
+                      {% endfor %}
                     </div>
                     <div class="social-share">
                       <div class="reactions">
