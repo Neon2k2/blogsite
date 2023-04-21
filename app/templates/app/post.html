@@ -89,6 +89,7 @@
                         </div>
                       </div>
                     </div>
+                    {% for comment in comments %}
                     <!-- comments -->
                     <div class="user-comment">
                       <div class="author">
@@ -96,19 +97,15 @@
                           <img src="../images/author.svg" alt="" />
                         </div>
                         <div class="details">
-                          <p>Author name</p>
-                          <small>June 20, 2022</small>
+                          <p>{{comment.name}}</p>
+                          <small>{{comment.date | date}}</small>
                         </div>
                       </div>
                       <div class="comment-sec-main">
                         <div class="comment-sec">
                           <div class="comment">
                             <p>
-                              Lorem ipsum dolor sit amet consectetur adipisicing
-                              elit. Tempora magnam minima harum, dignissimos
-                              ipsa vero sequi ipsam, distinctio quisquam quo
-                              cupiditate sed recusandae expedita quod iste
-                              maiores rerum. Eaque, dignissimos.
+                              {{comment.content}}
                             </p>
                           </div>
                           <div class="reply">
@@ -121,8 +118,7 @@
                               are marked<span>*</span>
                             </p>
                             <form method="POST">
-                              <textarea name="content" cols="40" rows="10" placeholder="Type your comment...." required id="id_content">
-      </textarea>
+                              <textarea name="content" cols="40" rows="10" placeholder="Type your comment...." required id="id_content"></textarea>
                               <div class="grid-3">
                                 <input type="text" name="name" maxlength="200" placeholder="Name" required id="id_name">
                                 <input type="text" name="email" maxlength="200" placeholder="Email" required id="id_email">
@@ -154,110 +150,11 @@
                             </p>
                           </div>
                         </div>
-
-                        
-
                       </div>
                     </div>
+                    {% comment %} user-comment end {% endcomment %}
+                    {% endfor %}
                     <!-- user comment -->
-                    <div class="user-comment">
-                      <div class="author">
-                        <div class="profile-pic">
-                          <img src="../images/author.svg" alt="" />
-                        </div>
-                        <div class="details">
-                          <p>Author name</p>
-                          <small>June 20, 2022</small>
-                        </div>
-                      </div>
-                      <div class="comment-sec-main">
-                        <div class="comment-sec">
-                          <div class="comment">
-                            <p>
-                              Lorem ipsum dolor sit amet consectetur adipisicing
-                              elit. Tempora magnam minima harum, dignissimos
-                              ipsa vero sequi ipsam, distinctio quisquam quo
-                              cupiditate sed recusandae expedita quod iste
-                              maiores rerum. Eaque, dignissimos.
-                            </p>
-                          </div>
-                          <div class="reply">
-                            <button onclick="toggleDiv(this)">Reply</button>
-                          </div>
-                        </div>
-                        <div class="comment-box" id="comment-reply-box">
-                          <h3>Reply to post</h3>
-                          <p>
-                            Your email address will not be published. Required fields
-                            are marked<span>*</span>
-                          </p>
-                          <form method="POST">
-                            <textarea name="content" cols="40" rows="10" placeholder="Type your comment...." required id="id_content">
-    </textarea>
-                            <div class="grid-3">
-                              <input type="text" name="name" maxlength="200" placeholder="Name" required id="id_name">
-                              <input type="text" name="email" maxlength="200" placeholder="Email" required id="id_email">
-                              <input type="text" name="website" maxlength="200" placeholder="Website" id="id_website">
-                            </div>
-            
-                            <button class="btn btn-primary rounded">
-                              Post Reply
-                            </button>
-                          </form>
-                        </div>  
-                      </div>
-                    </div>
-                    <!-- user comment end -->
-                    <!-- user comment -->
-                    <div class="user-comment">
-                      <div class="author">
-                        <div class="profile-pic">
-                          <img src="../images/author.svg" alt="" />
-                        </div>
-                        <div class="details">
-                          <p>Author name</p>
-                          <small>June 20, 2022</small>
-                        </div>
-                      </div>
-                      <div class="comment-sec-main">
-                        <div class="comment-sec">
-                          <div class="comment">
-                            <p>
-                              Lorem ipsum dolor sit amet consectetur adipisicing
-                              elit. Tempora magnam minima harum, dignissimos
-                              ipsa vero sequi ipsam, distinctio quisquam quo
-                              cupiditate sed recusandae expedita quod
-                              iste maiores rerum. Eaque, dignissimos.
-                            </p>
-                          </div>
-                          <div class="reply">
-                            <button onclick="toggleDiv(this)">Reply</button>
-                          </div>
-
-                          <div class="comment-box" id="comment-reply-box">
-                            <h3>Reply to post</h3>
-                            <p>
-                              Your email address will not be published. Required fields
-                              are marked<span>*</span>
-                            </p>
-                            <form method="POST">
-                              <textarea name="content" cols="40" rows="10" placeholder="Type your comment...." required id="id_content">
-      </textarea>
-                              <div class="grid-3">
-                                <input type="text" name="name" maxlength="200" placeholder="Name" required id="id_name">
-                                <input type="text" name="email" maxlength="200" placeholder="Email" required id="id_email">
-                                <input type="text" name="website" maxlength="200" placeholder="Website" id="id_website">
-                              </div>
-              
-                              <button class="btn btn-primary rounded">
-                                Post Reply
-                              </button>
-                            </form>
-                          </div>  
-                        </div>
-                      </div>
-                    </div>
-                    <!-- user comment end -->
                   </div>
                 </div>
                 <div class="comment-box">
@@ -266,12 +163,14 @@
                     Your email address will not be published. Required fields
                     are marked<span>*</span>
                   </p>
-                  <form action="">
-                    <textarea placeholder="Type your comment...."></textarea>
+                  <form method="POST">
+                    {% csrf_token %}
+                    {{form.content}}
                     <div class="grid-3">
-                      <input type="text" placeholder="Name" />
-                      <input type="temail" placeholder="Email" />
-                      <input type="url" placeholder="Website (optional)" />
+                      <input type='hidden' name='post_id' value='{{post.id}}'>
+                      {{form.name}}
+                      {{form.email}}
+                      {{form.website}}
                     </div>
                     <button class="btn btn-primary rounded">
                       Post comment

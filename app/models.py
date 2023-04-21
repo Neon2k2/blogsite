@@ -30,7 +30,7 @@ class Post(models.Model):
 
 
 
-class Comments(models.Model):
+class Comment(models.Model):
 
     content = models.TextField()
     date = models.DateTimeField(auto_now= True)
