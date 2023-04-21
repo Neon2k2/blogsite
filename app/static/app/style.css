@@ -13,7 +13,7 @@
 }
 
 :root {
-  --green: #1F8A70;
+  --yellow: #FF9F29;
   --black: #404040;
   --des: #555555;
   --shadow: #ffffff1a 0px 1px 1px 0px inset, #32325d40 0px 50px 100px -20px,
@@ -34,7 +34,7 @@ img {
 }
 
 .container {
-  max-width: 1220px;
+  max-width: 75%;
   margin: auto;
   padding: 0 10px;
 }
@@ -78,7 +78,7 @@ header .container {
 
 .logo i {
   font-size: 5rem;
-  color: var(--green);
+  color: var(--yellow);
 }
 
 .btn {
@@ -87,7 +87,7 @@ header .container {
   padding: 0 3rem;
   font-size: 1.6rem;
   font-weight: 500;
-  border: 1px solid var(--green);
+  border: 1px solid var(--yellow);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,13 +99,13 @@ header .container {
 }
 
 .btn-primary {
-  background: var(--green);
+  background: var(--yellow);
   color: white;
 }
 
 .btn-scoundary {
   background: transparent;
-  color: var(--green);
+  color: var(--yellow);
 }
 
 .rounded {
@@ -130,7 +130,7 @@ header .container {
 }
 
 .link-active {
-  color: var(--green);
+  color: var(--yellow);
   font-weight: 500;
 }
 
@@ -258,7 +258,7 @@ header .container {
 }
 
 .cetagory {
-  background: var(--green);
+  background: var(--yellow);
   width: fit-content;
   border-radius: 5rem;
   padding: 0.5rem 1rem;
@@ -273,7 +273,7 @@ header .container {
   display: flex;
   align-items: center;
   gap: 1rem;
-  color: var(--green);
+  color: var(--yellow);
   margin-top: 2rem;
 }
 
@@ -321,7 +321,7 @@ header .container {
   position: absolute;
   bottom: 1rem;
   left: 1rem;
-  background: var(--green);
+  background: var(--yellow);
   color: white;
   border-radius: 5rem;
   padding: 0.5rem 1rem;
@@ -397,7 +397,7 @@ header .container {
 
 .link h2,
 .news-signup h2 {
-  color: var(--green);
+  color: var(--yellow);
   font-weight: 600;
   font-size: 1.7rem;
 }
@@ -446,11 +446,11 @@ footer .container {
 }
 
 .social a:hover {
-  border-color: var(--green);
+  border-color: var(--yellow);
 }
 
 .social a:hover i {
-  color: var(--green);
+  color: var(--yellow);
 }
 
 /* blog page */
@@ -461,14 +461,14 @@ footer .container {
 
 .left {
   width: 100%;
-  height: 100%;
+  height: 70%;
 }
 
 .right {
   position: sticky;
   top: 70px;
   height: 100%;
-  width: 50%;
+  width: 30%;
 }
 
 .page-name h1 {
@@ -593,7 +593,7 @@ footer .container {
 }
 
 .track i {
-  color: var(--green);
+  color: var(--yellow);
   font-size: 2.5rem;
 }
 
@@ -654,7 +654,7 @@ footer .container {
 
 .reply i {
   font-size: 2rem;
-  color: var(--green);
+  color: var(--yellow);
 }
 
 .public-reply {
@@ -709,7 +709,7 @@ footer .container {
 
 .reactions > div i {
   font-size: 3rem;
-  color: var(--green);
+  color: var(--yellow);
 }
 
 .comment-box {
@@ -727,7 +727,7 @@ footer .container {
 }
 
 p span {
-  color: var(--green);
+  color: var(--yellow);
 }
 
 .comment-box textarea {
@@ -836,7 +836,7 @@ p span {
 }
 
 p a {
-  color: var(--green);
+  color: var(--yellow);
 }
 
 .grid {
@@ -847,7 +847,7 @@ p a {
   display: none !important;
 }
 .error-alert h3 {
-  color: green;
+  color: yellow;
   font-size: 1.6rem;
   font-weight: 400;
   margin-top: 2rem;
@@ -856,7 +856,7 @@ p a {
   position: relative;
 }
 .field-error {
-  background: green;
+  background: yellow;
 
   height: 100%;
   margin-top: 0.5rem;
@@ -869,7 +869,7 @@ p a {
   padding: 0.5rem 1rem;
 }
 .promotion {
-  background: linear-gradient(-45deg, var(--green), #8589ff);
+  background: linear-gradient(-45deg, var(--yellow), #8589ff);
   padding: 1rem;
   position: fixed;
   top: 0;
@@ -998,7 +998,7 @@ main {
     position: fixed;
     flex-direction: column;
     height: 90vh;
-    background: var(--green);
+    background: var(--yellow);
     width: 100%;
     justify-content: space-around;
     align-items: center;
@@ -1055,7 +1055,7 @@ main {
 }
 .timeline button i,
 .likes button i {
-  color: var(--green);
+  color: var(--yellow);
   font-size: 2.5rem;
 }
 .likes button i {

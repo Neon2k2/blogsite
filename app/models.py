@@ -39,3 +39,4 @@ class Comment(models.Model):
     website = models.CharField(max_length=50)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null= True, blank=True)
+    parent = models.ForeignKey('self', on_delete=models.DO_NOTHING, null=True, blank=True, related_name='replies')

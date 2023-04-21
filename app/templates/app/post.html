@@ -18,7 +18,6 @@
                 </div>
               </div>
             </div>
-
             <center>
               <div class="typo">
                 <h1 class="title blog-title">
@@ -118,11 +117,14 @@
                               are marked<span>*</span>
                             </p>
                             <form method="POST">
-                              <textarea name="content" cols="40" rows="10" placeholder="Type your comment...." required id="id_content"></textarea>
+                              {% csrf_token %}
+                              {{form.content}}
                               <div class="grid-3">
-                                <input type="text" name="name" maxlength="200" placeholder="Name" required id="id_name">
-                                <input type="text" name="email" maxlength="200" placeholder="Email" required id="id_email">
-                                <input type="text" name="website" maxlength="200" placeholder="Website" id="id_website">
+                                <input type='hidden' name='post_id' value='{{post.id}}'>
+                                <input type='hidden' name='parent' value='{{comment.id}}'>
+                                {{form.name}}
+                                {{form.email}}
+                                {{form.website}}
                               </div>
               
                               <button class="btn btn-primary rounded">
