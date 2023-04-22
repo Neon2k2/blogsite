@@ -13,7 +13,7 @@
 }
 
 :root {
-  --yellow: #FF9F29;
+  --yellow: #FFAB4C;
   --black: #404040;
   --des: #555555;
   --shadow: #ffffff1a 0px 1px 1px 0px inset, #32325d40 0px 50px 100px -20px,
@@ -195,7 +195,7 @@ header .container {
 
 .typo {
   width: 50%;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
 .title {
@@ -915,8 +915,10 @@ p a {
   width: 40%;
   margin: 0rem !important;
 }
+
+
 main {
-  padding-top: 10rem !important;
+  padding-top: 5rem !important;
 }
 /* responsive code */
 @media (max-width: 991px) {
@@ -951,7 +953,7 @@ main {
     width: 80%;
   }
   .sp {
-    padding: 5rem 0;
+    padding: 2rem 0;
   }
   .layout {
     flex-direction: column;
