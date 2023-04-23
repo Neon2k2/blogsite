@@ -11,9 +11,9 @@
   font-family: "Poppins", sans-serif;
   color: var(--black);
 }
- 
+
 :root {
-  --yellow: #FFAB4C;
+  --purple: #D057E0;
   --black: #404040;
   --des: #555555;
   --shadow: #ffffff1a 0px 1px 1px 0px inset, #32325d40 0px 50px 100px -20px,
@@ -78,7 +78,7 @@ header .container {
 
 .logo i {
   font-size: 5rem;
-  color: var(--yellow);
+  color: var(--purple);
 }
 
 .btn {
@@ -87,7 +87,7 @@ header .container {
   padding: 0 3rem;
   font-size: 1.6rem;
   font-weight: 500;
-  border: 1px solid var(--yellow);
+  border: 1px solid var(--purple);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,13 +99,13 @@ header .container {
 }
 
 .btn-primary {
-  background: var(--yellow);
+  background: var(--purple);
   color: white;
 }
 
 .btn-scoundary {
   background: transparent;
-  color: var(--yellow);
+  color: var(--purple);
 }
 
 .rounded {
@@ -130,7 +130,7 @@ header .container {
 }
 
 .link-active {
-  color: var(--yellow);
+  color: var(--purple);
   font-weight: 500;
 }
 
@@ -195,8 +195,32 @@ header .container {
 
 .typo {
   width: 50%;
-  margin-top: 2rem;
+  margin-top: 5rem;
 }
+
+.profile-picture {
+  width: 200px;
+  /* set the width of the profile image */
+  height: 200px;
+  /* set the height of the profile image */
+  border-radius: 50%;
+  /* make the image circular */
+  overflow: hidden;
+  /* hide any overflowing parts of the image */
+}
+
+.profile-picture img {
+  width: 100%;
+  /* set the width of the image to 100% of its container */
+  height: auto;
+  /* make the image's height adjust automatically based on its width */
+}
+
+.profile-info {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
 
 .title {
   font-size: 5rem;
@@ -258,7 +282,7 @@ header .container {
 }
 
 .cetagory {
-  background: var(--yellow);
+  background: var(--purple);
   width: fit-content;
   border-radius: 5rem;
   padding: 0.5rem 1rem;
@@ -273,7 +297,7 @@ header .container {
   display: flex;
   align-items: center;
   gap: 1rem;
-  color: var(--yellow);
+  color: var(--purple);
   margin-top: 2rem;
 }
 
@@ -321,7 +345,7 @@ header .container {
   position: absolute;
   bottom: 1rem;
   left: 1rem;
-  background: var(--yellow);
+  background: var(--purple);
   color: white;
   border-radius: 5rem;
   padding: 0.5rem 1rem;
@@ -397,7 +421,7 @@ header .container {
 
 .link h2,
 .news-signup h2 {
-  color: var(--yellow);
+  color: var(--purple);
   font-weight: 600;
   font-size: 1.7rem;
 }
@@ -446,11 +470,11 @@ footer .container {
 }
 
 .social a:hover {
-  border-color: var(--yellow);
+  border-color: var(--purple);
 }
 
 .social a:hover i {
-  color: var(--yellow);
+  color: var(--purple);
 }
 
 /* blog page */
@@ -593,7 +617,7 @@ footer .container {
 }
 
 .track i {
-  color: var(--yellow);
+  color: var(--purple);
   font-size: 2.5rem;
 }
 
@@ -654,7 +678,7 @@ footer .container {
 
 .reply i {
   font-size: 2rem;
-  color: var(--yellow);
+  color: var(--purple);
 }
 
 .public-reply {
@@ -699,7 +723,7 @@ footer .container {
   width: 4rem;
 }
 
-.reactions > div {
+.reactions>div {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -707,9 +731,9 @@ footer .container {
   cursor: pointer;
 }
 
-.reactions > div i {
+.reactions>div i {
   font-size: 3rem;
-  color: var(--yellow);
+  color: var(--purple);
 }
 
 .comment-box {
@@ -727,7 +751,7 @@ footer .container {
 }
 
 p span {
-  color: var(--yellow);
+  color: var(--purple);
 }
 
 .comment-box textarea {
@@ -836,25 +860,29 @@ p span {
 }
 
 p a {
-  color: var(--yellow);
+  color: var(--purple);
 }
 
 .grid {
   grid-template-columns: repeat(3, 1fr);
   gap: 5rem;
 }
+
 .menu {
   display: none !important;
 }
+
 .error-alert h3 {
   color: yellow;
   font-size: 1.6rem;
   font-weight: 400;
   margin-top: 2rem;
 }
+
 .inputs .input {
   position: relative;
 }
+
 .field-error {
   background: yellow;
 
@@ -862,14 +890,16 @@ p a {
   margin-top: 0.5rem;
   border-radius: 5rem;
 }
+
 .field-error p {
   margin-top: 0;
   color: white;
   font-size: 1.3rem;
   padding: 0.5rem 1rem;
 }
+
 .promotion {
-  background: linear-gradient(-45deg, var(--yellow), #8589ff);
+  background: linear-gradient(-45deg, var(--purple), #8589ff);
   padding: 1rem;
   position: fixed;
   top: 0;
@@ -880,15 +910,18 @@ p a {
   align-items: center;
   justify-content: center;
 }
+
 .promotion h3 a {
   color: white;
   font-size: 2rem;
   font-weight: 500;
   text-decoration: underline;
 }
+
 .reply-box {
   width: 100%;
 }
+
 .reply-box form {
   display: flex;
   align-items: center;
@@ -898,6 +931,7 @@ p a {
   margin-top: 2rem;
   border-radius: 5rem;
 }
+
 .reply-box textarea {
   width: 100%;
   height: 5rem;
@@ -907,10 +941,12 @@ p a {
   margin-top: 0;
   border: none;
 }
+
 .reply-box textarea::placeholder {
   font-size: 1.6rem;
   color: var(--black);
 }
+
 .reply-box button {
   width: 40%;
   margin: 0rem !important;
@@ -920,6 +956,7 @@ p a {
 main {
   padding-top: 5rem !important;
 }
+
 /* responsive code */
 @media (max-width: 991px) {
   html {
@@ -946,52 +983,67 @@ main {
   .typo {
     width: 100%;
   }
+
+
   .s-active input {
     width: 100%;
   }
+
   .s-active {
     width: 80%;
   }
+
   .sp {
     padding: 2rem 0;
   }
+
   .layout {
     flex-direction: column;
   }
+
   .right {
     width: 100%;
     position: unset;
     margin-top: 0;
   }
+
   .flex {
     flex-direction: column;
     align-items: center;
   }
+
   .page-name {
     margin-right: auto;
     margin-bottom: 5rem;
   }
+
   .sec-title::after {
     right: -16rem;
     width: 15rem;
   }
+
   .newsletter input {
     width: 100%;
   }
+
   .title {
     font-size: 3.5rem;
   }
+
   .page-name h1 {
     font-size: 3rem;
   }
+
   .left .typo {
     width: 100%;
   }
+
   .form {
     width: 100%;
     margin-top: 5rem;
     padding: 5rem 2rem;
   }
+
   footer .grid-4 {
     gap: 3rem;
   }
@@ -1000,7 +1052,7 @@ main {
     position: fixed;
     flex-direction: column;
     height: 90vh;
-    background: var(--yellow);
+    background: var(--purple);
     width: 100%;
     justify-content: space-around;
     align-items: center;
@@ -1010,37 +1062,46 @@ main {
     transform: translateX(100%);
     transition: 0.3s;
   }
+
   header {
     height: 10vh;
   }
+
   .links a {
     color: white;
   }
+
   .container-fluid {
     padding: 0 1rem;
     height: 100%;
   }
+
   .menu {
     font-size: 3.5rem;
     display: block !important;
   }
+
   header .btn {
     font-size: 1.4rem;
     padding: 0 2rem;
   }
+
   .active {
     transform: translateX(0) !important;
   }
+
   .reply-box form {
     flex-direction: column;
     border-radius: 1rem;
     padding: 2rem 1rem;
     gap: 2rem;
   }
+
   .reply-box input {
     margin-bottom: 2rem;
     border: 1px solid;
   }
+
   .promotion h3 a {
     color: white;
     font-size: 1.5rem;
@@ -1055,15 +1116,17 @@ main {
   font-size: 1.4rem;
   font-weight: 500;
 }
+
 .timeline button i,
 .likes button i {
-  color: var(--yellow);
+  color: var(--purple);
   font-size: 2.5rem;
 }
+
 .likes button i {
   font-size: 3rem;
 }
+
 .reply button {
   background: transparent;
 }
-
