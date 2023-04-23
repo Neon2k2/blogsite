@@ -6,22 +6,36 @@
         <center>
           <div class="search-bar">
             <input type="text" placeholder="Search" />
-            <div class="animated-search" onclick="searchbar()">
-              <i class="uil uil-search"></i>
-            </div>
+            <a href="{% url 'search' %}" class="animated-search" onclick="searchbar()">
+              <i class="uil uil-search"></i>  
+            </a>
+              
           </div>
           <div class="typo">
-            <h1 class="title">myBlogsite</h1>
+            {% if website_info.title %}
+            <h1 class="title">{{website_info.title}}</h1>
+            {% else %}
+            <h1 class="title">Super blog</h1>
+            {% endif %}
+            
+            {% if website_info.description %}
+            <p>
+              {{website_info.description}}
+            </p>
+            {% else %}
             <p>
               "Be informed, be entertained, be inspired."
             </p>
+            {% endif %}
           </div>
           <div class="newsletter">
+            {% if request.session.subscribed == None %}
             <form method="POST">
               {% csrf_token %}
               {{subscribe_form}}
               <button class="btn btn-primary">Subscribe</button>            
             </form>
+            {% endif %}
             {% if subscribe_successful %}
               <br>
               <p> Subscribed Successfully <p>

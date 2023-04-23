@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Blog | about{% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+      <div class="page-top">
+        <div class="top flex">
+          <div class="page-name">
+            <a href="https://murmuring-tundra-27912.herokuapp.com/" class="learn">
+              <span class="material-icons"> keyboard_return </span> Go back
+            </a>
+            <h1>About</h1>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+
+  <section class="sp">
+    <div class="container">
+        <p>{{website_info.about | linebreaksbr | capfirst | safe}}</p>
+    </div>
+  </section>
+
+
+
+
+{% endblock content %}
