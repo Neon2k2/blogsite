@@ -66,6 +66,10 @@ header {
   top: 0rem;
 }
 
+.form_control {
+  max-width: 100%;
+}
+
 header .container {
   display: flex;
   align-items: center;
@@ -327,6 +331,7 @@ header .container {
 .grid-3 {
   grid-template-columns: repeat(3, 1fr);
   gap: 5rem;
+
 }
 
 .card {
@@ -734,6 +739,10 @@ footer .container {
 .reactions>div i {
   font-size: 3rem;
   color: var(--purple);
+}
+
+.parent-div input {
+  width: 100%;
 }
 
 .comment-box {
