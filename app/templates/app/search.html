@@ -31,7 +31,7 @@
             <div class="card">
               <div class="post-img">
                 <img src="{{post.image.url}}" alt="" />
-                <a href={% url 'tag_page' post.tags.all.0.slug %} class="tag">{{post.tags.all.0.name}}</a>
+                <div class="tag">{{post.tags.all.0.name}}</div>
               </div>
               <div class="card-content">
                 <h3>
@@ -42,8 +42,8 @@
                     <img src="{{post.author.profile.profile_image.url}}" alt="" />
                   </div>
                   <div class="details">
-                    <a href="{% url 'author_page' post.author.profile.slug %}"><p>{{post.author.first_name}}</p></a>
-                    <small>{{post.last_updated}}</small>
+                    <p>{{post.author.first_name}}</p>
+                    <small>{{post.last_updated|date}}</small>
                   </div>
                 </div>
               </div>

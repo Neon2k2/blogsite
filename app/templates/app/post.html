@@ -190,166 +190,79 @@
           <div class="right">
             <div class="block">
               <h2 class="title2">Most recent</h2>
+              {% for post in recent_posts %}
               <div class="recent-post">
                 <div class="rounded-img">
-                  <img src="../images/post.png" alt="" />
+                  <img src="{{post.image.url}}" alt="" />
                 </div>
                 <div class="recent-content">
                   <h3>
-                    A blog title and other stuffs will add here, also we can
-                    incluse.
+                    {{post.title}}
                   </h3>
-                  <a class="learn" href="#"
+                  <a class="learn" href="{% url 'post_page' post.slug %}"
                     >Learn more
                     <span class="material-icons"> trending_flat </span></a
                   >
                 </div>
               </div>
-              <div class="recent-post">
-                <div class="rounded-img">
-                  <img src="../images/post.png" alt="" />
-                </div>
-                <div class="recent-content">
-                  <h3>
-                    A blog title and other stuffs will add here, also we can
-                    incluse.
-                  </h3>
-                  <a class="learn" href="#"
-                    >Learn more
-                    <span class="material-icons"> trending_flat </span></a
-                  >
-                </div>
-              </div>
-              <div class="recent-post">
-                <div class="rounded-img">
-                  <img src="../images/post.png" alt="" />
-                </div>
-                <div class="recent-content">
-                  <h3>
-                    A blog title and other stuffs will add here, also we can
-                    incluse.
-                  </h3>
-                  <a class="learn" href="#"
-                    >Learn more
-                    <span class="material-icons"> trending_flat </span></a
-                  >
-                </div>
-              </div>
+              {% endfor %}
+
             </div>
 
             <div class="block r-blog">
               <h2 class="title2">Related Blogs</h2>
+              {% for post in related_posts %}
               <!-- card -->
               <a href="#">
                 <div class="card">
                   <div class="post-img">
-                    <img src="../images/post.png" alt="" />
-                    <div class="tag">Tag name</div>
+                    <img src="{{post.image.url}}" alt="" />
+                    <div class="tag">{{post.tags.all.0.name}}</div>
                   </div>
                   <div class="card-content">
                     <h3>
-                      A blog title and other stuffs will add here, also we can
-                      include.
+                      {{post.title}}
                     </h3>
                     <div class="author">
                       <div class="profile-pic">
-                        <img src="../images/author.svg" alt="" />
+                        <img src="{{post.author.profile.profile_image.url}}" alt="" />
                       </div>
                       <div class="details">
                         <p>{{post.author.first_name}}</p>
-                        <small>June 20, 2022</small>
+                        <small>{{post.last_updated | date}}</small>
                       </div>
                     </div>
                   </div>
                 </div>
               </a>
               <!-- card end-->
+              {% endfor %}
 
-              <!-- card -->
-              <a href="#">
-                <div class="card">
-                  <div class="post-img">
-                    <img src="../images/post.png" alt="" />
-                    <div class="tag">Tag name</div>
-                  </div>
-                  <div class="card-content">
-                    <h3>
-                      A blog title and other stuffs will add here, also we can
-                      include.
-                    </h3>
-                    <div class="author">
-                      <div class="profile-pic">
-                        <img src="../images/author.svg" alt="" />
-                      </div>
-                      <div class="details">
-                        <p>{{post.author.first_name}}</p>
-                        <small>June 20, 2022</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <!-- card end-->
+
             </div>
             <div class="block">
               <h2 class="title2">Top category</h2>
+              {% for post in top_posts %}
               <div class="card">
                 <h3>
-                  A blog title and other stuffs will add here, lso we can
-                  incluse.
+                  {{post.title}}
                 </h3>
                 <p>
-                  Lorem ipsum began as scrambled, nonsensical Latin derived from
-                  Cicero's 1st-century BC text De Finibus Bonorum et Malorum.
+                  {{post.content | truncatechars:200|safe}}
                 </p>
-                <a class="learn" href="#"
+                <a class="learn" href="{% url 'post_page' post.slug %}"
                   >Learn more
                   <span class="material-icons"> trending_flat </span></a
                 >
               </div>
-              <div class="card">
-                <h3>
-                  A blog title and other stuffs will add here, lso we can
-                  incluse.
-                </h3>
-                <p>
-                  Lorem ipsum began as scrambled, nonsensical Latin derived from
-                  Cicero's 1st-century BC text De Finibus Bonorum et Malorum.
-                </p>
-                <a class="learn" href="#"
-                  >Learn more
-                  <span class="material-icons"> trending_flat </span></a
-                >
-              </div>
-              <div class="card">
-                <h3>
-                  A blog title and other stuffs will add here, lso we can
-                  incluse.
-                </h3>
-                <p>
-                  Lorem ipsum began as scrambled, nonsensical Latin derived from
-                  Cicero's 1st-century BC text De Finibus Bonorum et Malorum.
-                </p>
-                <a class="learn" href="#"
-                  >Learn more
-                  <span class="material-icons"> trending_flat </span></a
-                >
-              </div>
+              {% endfor %}
             </div>
             <div class="block">
               <h2 class="title2">Top Tags</h2>
               <div class="blog-tags">
-                <div class="tag">Tag</div>
-                <div class="tag">Tag content</div>
-                <div class="tag">Tag</div>
-                <div class="tag">Tag content</div>
-                <div class="tag">Tag content</div>
-                <div class="tag">Tag</div>
-                <div class="tag">Tag content</div>
-                <div class="tag">Tag content</div>
-                <div class="tag">Tag</div>
-                <div class="tag">Tag content</div>
-                <div class="tag">Tag</div>
+                {% for tag in tags %}
+                <a href='{% url 'tag_page' tag.slug %}'class="tag">{{tag.name}}</a>
+                {% endfor %}
               </div>
             </div>
           </div>

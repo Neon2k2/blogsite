@@ -61,7 +61,7 @@
             </h1>
             <p class="des">
               {% comment %} getting online 200 characters of the blog to render on the featured section {% endcomment %}
-              {{featured_blog.content | truncatechars:200}}
+              {{featured_blog.content | truncatechars:200|safe}}
             </p>
             <a class="learn" href="{% url 'post_page' featured_blog.slug %}"
               >Learn more <span class="material-icons"> trending_flat </span></a
@@ -108,7 +108,7 @@
           <!-- card end-->
         </div>
         <center>
-          <a href=""><button class="btn btn-primary rounded view">
+          <a href="{% url 'search' %}"><button class="btn btn-primary rounded view">
             View more <span class="material-icons"> trending_flat </span>
           </button></a>
         </center>
@@ -146,7 +146,7 @@
           {% endfor %}
         </div>
         <center>
-          <a href=""><button class="btn btn-primary rounded view">
+          <a href="{% url 'search' %}"><button class="btn btn-primary rounded view">
             View more <span class="material-icons"> trending_flat </span>
           </button></a>
         </center>

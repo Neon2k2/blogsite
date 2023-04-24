@@ -5,6 +5,8 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.db.models import Count
 from app.models import Comment, Post, Profile, Tag, WebsiteMeta
+from django.db.models import Max, F
+
 
 # Create your views here.
 
@@ -48,6 +50,21 @@ def post_page(request, slug):
 
     comments = Comment.objects.filter(post=post, parent=None)
     form = CommentForm()
+    recent_posts = Post.objects.all().order_by('-last_updated')[0:3]
+    related_posts = Post.objects.filter(
+        tags__in=post.tags.all()[:1]).order_by('-last_updated')[:3]
+    top_posts = Post.objects.filter(
+        tags__in=post.tags.all()).order_by('-view_count')[:3]
+
+    # annotate maximum view_count for each tag
+    tags_with_max_views = Tag.objects.annotate(
+        max_view_count=Max('post__view_count')
+    )
+
+    # filter tags based on maximum view_count annotation
+    tags = tags_with_max_views.filter(
+        post__view_count__gte=F('max_view_count')
+    )[:3]
 
     if request.POST:
         comment_form = CommentForm(request.POST)
@@ -77,7 +94,8 @@ def post_page(request, slug):
         post.view_count = post.view_count + 1
     post.save()
 
-    context = {'post': post, 'form': form, 'comments': comments}
+    context = {'post': post, 'form': form,
+               'comments': comments, 'recent_posts': recent_posts, 'related_posts': related_posts, 'top_posts': top_posts, 'tags': tags}
     return render(request, 'app/post.html', context)
 
 
