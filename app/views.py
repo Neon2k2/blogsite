@@ -149,3 +149,9 @@ def about(request):
 
     context = {'website_info': website_info}
     return render(request, 'app/about.html', context)
+
+
+def owner(request):
+
+    context = {}
+    return render(request, 'app/owner.html', context)
