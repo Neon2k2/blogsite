@@ -11,11 +11,19 @@
       <h1>Sign Up</h1>
     </div>
 
-    <form action="#" class="form">
-      <center>
+    <form method="post" class="form">
+        {% csrf_token %}
+        <center>
         <div class="logo f-logo">
           <i class="fa-brands fa-twitch"></i>
         </div>
+        {% if form.non_field_errors %}
+          {% for error in form.non_field_errors %}
+            <div class="field-error">
+              <p>{{error}}</p>
+            </div>
+          {% endfor %}
+        {% endif %}
         <div class="inputs">
           <div>
             <div class="search-bar s-active input">
@@ -40,7 +48,7 @@
             </div>
             {% if form.email.errors %}
             <div class="field-error">
-              <p>{{form.email.error.as_text}}</p>
+              <p>{{form.email.errors.as_text}}</p>
             </div>
             {% endif %}
           </div>
@@ -55,7 +63,7 @@
             <div class="field-error">
                 {% if form.password1.errors %}
                 <div class="field-error">
-                  <p>{{form.password1.error.as_text}}</p>
+                  <p>{{form.password1.errors.as_text}}</p>
                 </div>
                 {% endif %}
             </div>
@@ -70,7 +78,7 @@
             <div class="field-error">
                 {% if form.password2.errors %}
                 <div class="field-error">
-                  <p>{{form.password2.error.as_text}}</p>
+                  <p>{{form.password2.errors.as_text}}</p>
                 </div>
                 {% endif %}
             </div>
