@@ -55,6 +55,11 @@ class Post(models.Model):
         User, on_delete=models.CASCADE, null=True, blank=True)
     bookmarks = models.ManyToManyField(
         User, related_name="bookmarks", default=None, blank=True)
+    likes = models.ManyToManyField(
+        User, related_name='post_likes', default=None,  blank=True)
+
+    def number_of_likes(self):
+        return self.likes.count()
 
 
 class Comment(models.Model):

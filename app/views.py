@@ -52,11 +52,21 @@ def post_page(request, slug):
     comments = Comment.objects.filter(post=post, parent=None)
     form = CommentForm()
 
+    # bookmark logic
     bookmarked = False
     if post.bookmarks.filter(id=request.user.id).exists():
         bookmarked = True
 
     is_bookmarked = bookmarked
+
+    # likes logic
+    liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        liked = True
+
+    number_of_likes = post.number_of_likes()
+
+    is_liked = liked
 
     recent_posts = Post.objects.all().order_by('-last_updated')[0:3]
     related_posts = Post.objects.filter(
@@ -94,7 +104,15 @@ def post_page(request, slug):
                 post = Post.objects.get(id=postid)
                 comment.post = post
                 comment.save()
+
+                # update the total number of comments
+                post.total_comment = Comment.objects.filter(post=post).count()
+                post.save()
+
                 return HttpResponseRedirect(reverse('post_page', kwargs={'slug': slug}))
+
+    total_comment = Comment.objects.filter(post=post).count()
+    print(total_comment)
 
     if post.view_count is None:
         post.view_count = 1
@@ -103,7 +121,7 @@ def post_page(request, slug):
     post.save()
 
     context = {'post': post, 'form': form,
-               'comments': comments, 'is_bookmarked': is_bookmarked, 'recent_posts': recent_posts, 'related_posts': related_posts, 'top_posts': top_posts, 'tags': tags}
+               'comments': comments, 'is_bookmarked': is_bookmarked, 'is_liked': is_liked, 'number_of_likes': number_of_likes, 'total_comment': total_comment, 'recent_posts': recent_posts, 'related_posts': related_posts, 'top_posts': top_posts, 'tags': tags}
     return render(request, 'app/post.html', context)
 
 
@@ -186,4 +204,13 @@ def bookmark_post(request, slug):
         post.bookmarks.remove(request.user)
     else:
         post.bookmarks.add(request.user)
+    return HttpResponseRedirect(reverse('post_page', args=[str(slug)]))
+
+
+def like_post(request, slug):
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+    else:
+        post.likes.add(request.user)
     return HttpResponseRedirect(reverse('post_page', args=[str(slug)]))
