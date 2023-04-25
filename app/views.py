@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from app.forms import CommentForm, NewUserForm, SubscribeForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -51,6 +51,13 @@ def post_page(request, slug):
 
     comments = Comment.objects.filter(post=post, parent=None)
     form = CommentForm()
+
+    bookmarked = False
+    if post.bookmarks.filter(id=request.user.id).exists():
+        bookmarked = True
+
+    is_bookmarked = bookmarked
+
     recent_posts = Post.objects.all().order_by('-last_updated')[0:3]
     related_posts = Post.objects.filter(
         tags__in=post.tags.all()[:1]).order_by('-last_updated')[:3]
@@ -96,7 +103,7 @@ def post_page(request, slug):
     post.save()
 
     context = {'post': post, 'form': form,
-               'comments': comments, 'recent_posts': recent_posts, 'related_posts': related_posts, 'top_posts': top_posts, 'tags': tags}
+               'comments': comments, 'is_bookmarked': is_bookmarked, 'recent_posts': recent_posts, 'related_posts': related_posts, 'top_posts': top_posts, 'tags': tags}
     return render(request, 'app/post.html', context)
 
 
@@ -170,3 +177,13 @@ def register_user(request):
     context = {'form': form}
 
     return render(request, 'registration/registration.html', context)
+
+
+def bookmark_post(request, slug):
+
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    if post.bookmarks.filter(id=request.user.id).exists():
+        post.bookmarks.remove(request.user)
+    else:
+        post.bookmarks.add(request.user)
+    return HttpResponseRedirect(reverse('post_page', args=[str(slug)]))

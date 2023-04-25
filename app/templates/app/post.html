@@ -34,12 +34,28 @@
                     <p class="view-count">{{post.view_count}} view{{post.view_count|pluralize}}</p>
                   </div>
                   <div class="track">
-                    <form action="" method="POST">
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'bookmark_post' post.slug %}" method="POST">
+                      {% csrf_token %}
+                      <input type="hidden" name="post_id" value="{{post.id}}">
+                      {% if is_bookmarked %}
+                      <button type="submit" class="btn btn-info">
+                        <i class="fa-solid fa-bookmark"></i>
+                        <p class="bookmark">Remove Bookmark</p>
+                      </button>
+                      {% else %}
                       <button type="submit" class="btn btn-info">
                         <i class="uil uil-bookmark-full"></i>
                         <p class="bookmark">Bookmark</p>
                       </button>
+                      {% endif %}
                     </form>
+                    {% else %}
+                    <a class="track" href="{% url 'login' %}">
+                      <i class="uil uil-bookmark-full"></i>
+                      <p class="bookmark">Bookmark</p>
+                    </a><br>
+                    {% endif %}
                   </div>
                 </div>
               </div>

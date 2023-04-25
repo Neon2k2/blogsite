@@ -53,6 +53,8 @@ class Post(models.Model):
     isfeatured = models.BooleanField(default=False)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, blank=True)
+    bookmarks = models.ManyToManyField(
+        User, related_name="bookmarks", default=None, blank=True)
 
 
 class Comment(models.Model):
