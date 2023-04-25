@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blog | Login{% endblock title %}
+
+{% block content %}
+<form action="{% url 'login' %}" method="post" class="form">
+  {% csrf_token %}
+    <center>
+        <div class="logo f-logo">
+          <i class="fa-brands fa-twitch"></i>
+        </div>
+
+        {% if form.non_field_errors %}
+          {% for error in form.non_field_errors %}
+            <div class="field-error">
+              <p>{{error}}</p>
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        <div class="inputs">
+          <div>
+          <div class="search-bar s-active input">
+            {{form.username}}
+            
+            <div class="animated-search">
+              <i class="uil uil-envelope-alt"></i>
+            </div>
+          </div>
+          <div class="search-bar s-active input">
+            {{form.password}}
+            
+            <div class="animated-search">
+              <i class="uil uil-key-skeleton"></i>
+            </div>
+          </div>
+          
+          </div>
+
+          <button class="btn btn-primary rounded" type="submit">
+            Login <span class="material-icons"> arrow_right_alt </span>
+          </button>
+          <p>Not have an account? <a href="{% url 'register' %}">Sign up</a></p>
+        </div>
+      </center>
+    </form>
+    {% endblock content %} 

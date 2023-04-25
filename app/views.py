@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from app.forms import CommentForm, SubscribeForm
+from app.forms import CommentForm, NewUserForm, SubscribeForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -155,3 +155,12 @@ def owner(request):
 
     context = {}
     return render(request, 'app/owner.html', context)
+
+
+def register_user(request):
+
+    form = NewUserForm()
+
+    context = {'form': form}
+
+    return render(request, 'registration/registration.html', context)

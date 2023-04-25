@@ -9,5 +9,6 @@ urlpatterns = [
     path('author/<slug:slug>', views.author_page, name='author_page'),
     path('search/', views.search_posts, name='search'),
     path('about/', views.about, name='about'),
-    path('owner/', views.owner, name='owner')
+    path('owner/', views.owner, name='owner'),
+    path('accounts/register/', views.register_user, name='register')
 ]

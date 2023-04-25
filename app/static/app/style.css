@@ -13,7 +13,7 @@
 }
 
 :root {
-  --purple: #D057E0;
+  --purple: #1F8A70;
   --black: #404040;
   --des: #555555;
   --shadow: #ffffff1a 0px 1px 1px 0px inset, #32325d40 0px 50px 100px -20px,
@@ -882,7 +882,7 @@ p a {
 }
 
 .error-alert h3 {
-  color: yellow;
+  color: #FF6969;
   font-size: 1.6rem;
   font-weight: 400;
   margin-top: 2rem;
@@ -893,7 +893,7 @@ p a {
 }
 
 .field-error {
-  background: yellow;
+  background: #FF6969;
 
   height: 100%;
   margin-top: 0.5rem;

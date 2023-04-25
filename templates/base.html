@@ -28,7 +28,7 @@
     <header>
       <div class="container container-fluid">
         <a href='{% url 'index' %}' class="logo f-logo">
-          <i class="fa-brands uil-google-hangouts"></i>
+          <i class="fa-brands fa-twitch"></i>
         </a >
         <div class="links">
           <a href="{% url 'index' %}">Home</a>
@@ -37,14 +37,22 @@
           <a href="{% url 'owner' %}">Admin</a>
           
         </div>
+
+        
         <div class="action-btn">
-          <a href="pages/login.html"
+          {% if user.is_authenticated %}
+          <a href="{% url 'logout' %}"
+            ><button class="btn btn-scoundary">Logout</button></a
+          >
+        {% else %}
+        <a href="{% url 'login' %}"
             ><button class="btn btn-scoundary">Login</button></a
           >
-          <a href="pages/signup.html">
+          <a href="{% url 'register' %}">
             <button class="btn btn-primary">Sign Up</button></a
           >
           <i class="uil uil-align-center-alt menu" onclick="menu()"></i>
+            {% endif %}
         </div>
       </div>
     </header>
@@ -56,7 +64,7 @@
       <div class="container">
         <div class="grid-4">
           <a href='{% url 'index' %}' class="logo f-logo">
-            <i class="fa-brands uil-google-hangouts"></i>
+            <i class="fa-brands fa-twitch"></i>
           </a >
           <div class="link">
             <h2>Quick link</h2>
