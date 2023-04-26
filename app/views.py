@@ -52,6 +52,9 @@ def post_page(request, slug):
     comments = Comment.objects.filter(post=post, parent=None)
     form = CommentForm()
 
+    author = post.author
+    print(author)
+
     # bookmark logic
     bookmarked = False
     if post.bookmarks.filter(id=request.user.id).exists():
@@ -112,7 +115,6 @@ def post_page(request, slug):
                 return HttpResponseRedirect(reverse('post_page', kwargs={'slug': slug}))
 
     total_comment = Comment.objects.filter(post=post).count()
-    print(total_comment)
 
     if post.view_count is None:
         post.view_count = 1
@@ -120,7 +122,7 @@ def post_page(request, slug):
         post.view_count = post.view_count + 1
     post.save()
 
-    context = {'post': post, 'form': form,
+    context = {'post': post, 'form': form, 'author': author,
                'comments': comments, 'is_bookmarked': is_bookmarked, 'is_liked': is_liked, 'number_of_likes': number_of_likes, 'total_comment': total_comment, 'recent_posts': recent_posts, 'related_posts': related_posts, 'top_posts': top_posts, 'tags': tags}
     return render(request, 'app/post.html', context)
 
@@ -141,18 +143,22 @@ def tag_page(request, slug):
 
 
 def author_page(request, slug):
-
     profile = Profile.objects.get(slug=slug)
     top_posts = Post.objects.filter(
         author=profile.user).order_by('-view_count')[0:2]
     recent_posts = Post.objects.filter(
-        author=profile.user).order_by('-last_updated')[0:3]
-    top_authors = User.objects.annotate(
-        number=Count('post')).order_by('-number')
-
+        author=profile.user).order_by('-last_updated')[0:2]
+    top_authors = User.objects.annotate(number=Count('post')).exclude(
+        id=profile.user.id).order_by('-number')[:5]
     context = {'profile': profile, 'top_posts': top_posts,
                'recent_posts': recent_posts, 'top_authors': top_authors}
-
+    try:
+        Post.objects.filter(author=profile.user).exists()
+    except Post.DoesNotExist:
+        top_authors = User.objects.annotate(number=Count('post')).exclude(
+            id=profile.user.id).order_by('-number')[:6]
+        context['top_authors'] = top_authors
+        context['no_posts'] = True
     return render(request, 'app/author.html', context)
 
 
@@ -161,7 +167,6 @@ def search_posts(request):
     if request.GET.get('q'):
         # It checks if the request object has a query parameter 'q' (which is usually added to the URL when a user searches for something). If it exists, it sets the value of search_query to the query parameter value.
         search_query = request.GET.get('q')
-        print('search:', search_query)
     posts = Post.objects.filter(title__icontains=search_query)
     context = {'posts': posts, 'search_query': search_query}
 
@@ -214,3 +219,11 @@ def like_post(request, slug):
     else:
         post.likes.add(request.user)
     return HttpResponseRedirect(reverse('post_page', args=[str(slug)]))
+
+
+def all_bookmarked_posts(request):
+    all_bookmarked_posts = Post.objects.filter(bookmarks=request.user)
+
+    context = {'all_bookmarked_posts': all_bookmarked_posts}
+
+    return render(request, 'app/all_bookmarked_posts.html', context)

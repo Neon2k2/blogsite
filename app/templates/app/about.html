@@ -8,7 +8,7 @@
       <div class="page-top">
         <div class="top flex">
           <div class="page-name">
-            <a href="https://murmuring-tundra-27912.herokuapp.com/" class="learn">
+            <a href="{% url 'index' %}" class="learn">
               <span class="material-icons"> keyboard_return </span> Go back
             </a>
             <h1>About</h1>
@@ -20,7 +20,7 @@
 
   <section class="sp">
     <div class="container">
-        <p>{{website_info.about | linebreaksbr | capfirst | safe}}</p>
+        <p>{{website_info.about | safe | linebreaksbr}}</p>
     </div>
   </section>
 

@@ -2,6 +2,7 @@
 {% block title %}Blog | The Super Blog{% endblock title %}
 {% load static %}
 
+
 {% block content %}
       <div class="container">
         <div class="layout">
@@ -108,18 +109,12 @@
                       </div>
                       <div class="share">
                         <div class="social">
-                          <a href="#">
-                            <i class="fa-brands fa-facebook-f"></i>
-                          </a>
-                          <a href="#">
-                            <i class="fa-brands fa-instagram"></i>
-                          </a>
-                          <a href="#">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                          </a>
-                          <a href="#">
-                            <i class="fa-brands fa-twitter"></i>
-                          </a>
+                          {% url 'post_detail' post.id as post_url %}
+                          <div class="share-icons">
+                            <a href="javascript:void(0);" onclick="copyToClipboard('{{ post_url }}')" title="Copy link to clipboard">
+                              <i class="fas fa-link"></i>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>

@@ -340,6 +340,7 @@ header .container {
   border-radius: 1rem;
   cursor: pointer;
   transition: 0.3s;
+  height: 100%;
 }
 
 .post-img {

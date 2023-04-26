@@ -35,6 +35,11 @@
           <a href="{% url 'search' %}">All Post</a>
           <a href="{% url 'about' %}">About</a>
           <a href="{% url 'owner' %}">Admin</a>
+          {% if user.is_authenticated %}
+          <a href="{% url 'all_bookmarked_posts' %}"
+            >Bookmarks</a
+          >
+          {% endif %}
           
         </div>
 
@@ -77,42 +82,21 @@
             <h2>Top cetagory</h2>
             <div class="q-link">
               <a href="{% url 'index' %}">Home</a>
-              <a href="{% url 'search' %}">All Post</a>
-              <a href="{% url 'about' %}">About</a>
               <a href="{% url 'owner' %}">Admin</a>
             </div>
           </div>
           <div class="news-signup">
-            <h2>Subscribe</h2>
-            <div class="newsletter">
-              <form method="POST">
-                <input
-                  type="email"
-                  name="email"
-                  maxlength="100"
-                  placeholder="Enter your email"
-                  required=""
-                  id="id_email"
-                />
-                <button class="btn btn-primary">Subscribe</button>
-              </form>
-            </div>
+            <p> ❤ Made by Gaurish Ninnekar</p>
           </div>
         </div>
         <div class="share">
           <div class="social">
-            {% comment %} <a href="#">
-              <i class="fa-brands fa-facebook-f"></i>
-            </a> {% endcomment %}
             <a href="https://www.instagram.com/gaurishninnekar/">
               <i class="fa-brands fa-instagram"></i>
             </a>
             <a href="https://www.linkedin.com/in/gaurishninnekar/">
               <i class="fa-brands fa-linkedin-in"></i>
             </a>
-            {% comment %} <a href="#">
-              <i class="fa-brands fa-twitter"></i>
-            </a> {% endcomment %}
           </div>
         </div>
       </div>
