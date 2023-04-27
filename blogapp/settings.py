@@ -59,6 +59,7 @@ WSGI_APPLICATION = 'blogapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -68,10 +69,13 @@ DATABASES = {
         'HOST': 'keptcloudsserver.mysql.database.azure.com',
         'PORT': '3306',
         'OPTIONS': {
-            'ssl': {'ca': 'DigiCertGlobalRootCA.crt.pem'}
+            'ssl': {'ca': '/path/to/DigiCertGlobalRootCA.crt.pem'}
         }
     }
 }
+
+
+
 
 
 # Password validation
