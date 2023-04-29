@@ -62,17 +62,11 @@ WSGI_APPLICATION = 'blogapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'keptclouds',
-        'USER': 'neon2k2',
-        'PASSWORD': 'Billionaireboy@123',
-        'HOST': 'keptcloudsserver.mysql.database.azure.com',
-        'PORT': '3306',
-        'OPTIONS': {
-            'ssl': {'ca': '/path/to/DigiCertGlobalRootCA.crt.pem'}
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 
