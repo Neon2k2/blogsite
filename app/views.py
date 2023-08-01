@@ -69,8 +69,14 @@ def post_page(request, slug):
     is_liked = liked
 
     recent_posts = Post.objects.all().order_by('-last_updated')[0:3]
-    related_posts = Post.objects.filter(
-        tags__in=post.tags.all()[:1]).order_by('-last_updated')[:3]
+    # Fetch the first tag object associated with the post
+    first_tag = post.tags.first()
+
+    # Retrieve related posts based on the first tag (if any)
+    if first_tag:
+        related_posts = Post.objects.filter(tags=first_tag).exclude(id=post.id).order_by('-last_updated')[:3]
+    else:
+        related_posts = Post.objects.none()
     top_posts = Post.objects.filter(
         tags__in=post.tags.all()).order_by('-view_count')[:3]
 
