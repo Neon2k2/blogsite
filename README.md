@@ -4,7 +4,7 @@ Sure! Below is a sample README file that you can use for your Django blog applic
 
 # LifeTech360 - A Lifestyle and Technology Blog
 
-![LifeTech360 Logo](screenshots/tornado-removebg-preview)
+![LifeTech360 Logo](screenshots/tornado-removebg-preview.png)
 
 ## Overview
 
@@ -12,7 +12,7 @@ LifeTech360 is a web application built with Django that serves as a lifestyle an
 
 ## DEMO
 
-![DEMO](screenshots/Blog-welcome.mp4)
+![lifetech360](screenshots/Blog-welcome.mp4)
 
 ## Features
 
