@@ -9,9 +9,9 @@ SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'django-insecure-5%np)%k&95mjqyz@d)jmh7ttgs%kvsuxt#sn)&v2vnc7rubg(q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['keptclouds.com']
+ALLOWED_HOSTS = []
 
 # Application definition
 

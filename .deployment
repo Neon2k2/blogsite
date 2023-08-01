@@ -1,2 +1,0 @@
-[config]
-command = gunicorn blogapp.wsgi:application --bind=0.0.0.0:%HTTP_PLATFORM_PORT% --workers=1
