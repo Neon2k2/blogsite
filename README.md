@@ -12,7 +12,7 @@ LifeTech360 is a web application built with Django that serves as a lifestyle an
 
 ## DEMO
 
-![DEMO](screenshots/Blog-welcome.webm)
+![DEMO](screenshots/Blog-welcome.mp4)
 
 ## Features
 
