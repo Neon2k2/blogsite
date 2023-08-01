@@ -66,7 +66,7 @@ python manage.py runserver
 
 - Django: v3.2.4
 - Bootstrap: v5.3.0
-- SQLite3
+- MySQL
 
 ## Usage
 
