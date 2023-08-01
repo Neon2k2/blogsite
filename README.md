@@ -16,7 +16,8 @@ LifeTech360 is a web application built with Django that serves as a lifestyle an
 ![DEMO](screenshots/Blog-welcome.gif)
 =======
 ![lifetech360](screenshots/Blog-welcome.mp4)
->>>>>>> 2c6cb70852883eec6c699939f78fe7630b90493e
+
+> > > > > > > 2c6cb70852883eec6c699939f78fe7630b90493e
 
 ## Features
 
@@ -68,7 +69,7 @@ python manage.py runserver
 
 - Django: v3.2.4
 - Bootstrap: v5.3.0
-- SQLite3
+- MySQL
 
 ## Usage
 
@@ -89,7 +90,5 @@ If you have any questions or need assistance, feel free to reach out to us at co
 LifeTech360 is licensed under the MIT License. See [LICENSE](link-to-your-license-file) for more details.
 
 ---
-
-
 
 The README file should provide a brief overview of the project, installation instructions, usage guidelines, and other essential information for potential contributors and users. Make sure to keep it updated and accurate as the project evolves.
