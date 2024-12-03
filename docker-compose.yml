@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+    container_name: blogsite_web
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    environment:
+      - DJANGO_SETTINGS_MODULE=blogsite.settings
+      - DATABASE_HOST=db
+      - DATABASE_NAME=blogsiteDb
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=Neon2k2@123
+
+  db:
+    image: mysql:8.0
+    container_name: blogsite_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Neon2k2@123  # Set the root password for MySQL
+      MYSQL_DATABASE: blogsiteDb        # Optional: Pre-create a database
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

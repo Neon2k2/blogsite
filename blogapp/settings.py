@@ -60,21 +60,14 @@ WSGI_APPLICATION = 'blogapp.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'blogsiteDb',
-#         'USER': 'root',
-#         'PASSWORD': 'Neon2k2@123',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',  # This will create the database file in your project directory
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DATABASE_NAME', 'blogsiteDb'),
+        'USER': os.getenv('DATABASE_USER', 'root'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD', 'Neon2k2@123'),
+        'HOST': os.getenv('DATABASE_HOST', 'localhost'),
+        'PORT': '3306',
     }
 }
 
