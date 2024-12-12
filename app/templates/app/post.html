@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Blog | The Super Blog{% endblock title %}
+{% block title %}Blog | Techxico{% endblock title %}
 {% load static %}
 
 
@@ -79,7 +79,7 @@
                     </div>
                     <div class="social-share">
                       <div class="reactions">
-                        
+
                         <div class="likes">
                           {% if user.is_authenticated %}
                           <form action='{% url 'like_post' post.slug %}' method='post'>
@@ -101,7 +101,7 @@
                           </button>
                         {% endif %}
                         </div>
-                        
+
                         <div class="total-comments">
                           <i class="uil uil-comment-alt"></i>
                           <span>{{total_comment}}</span>
@@ -156,15 +156,15 @@
                                 {{form.email}}
                                 {{form.website}}
                               </div>
-              
+
                               <button class="btn btn-primary rounded">
                                 Post Reply
                               </button>
                             </form>
-                          </div>  
+                          </div>
 
                         </div>
-                        
+
                         {% for reply in comment.replies.all %}
                         <div class="public-reply">
                           <div class="author">
@@ -184,7 +184,7 @@
                         </div>
                         {% endfor %}
 
-                        
+
 
                       </div>
                     </div>
@@ -301,5 +301,5 @@
         </div>
       </div>
 
-    
+
       {% endblock content %}

@@ -34,16 +34,16 @@
           <a href="{% url 'index' %}">Home</a>
           <a href="{% url 'search' %}">All Post</a>
           <a href="{% url 'about' %}">About</a>
-          <a href="{% url 'owner' %}">Admin</a>
+          <a href="https://icy-island-0001ce200.5.azurestaticapps.net">Admin</a>
           {% if user.is_authenticated %}
           <a href="{% url 'all_bookmarked_posts' %}"
             >Bookmarks</a
           >
           {% endif %}
-          
+
         </div>
 
-        
+
         <div class="action-btn">
           {% if user.is_authenticated %}
           <a href="{% url 'logout' %}"
@@ -82,7 +82,7 @@
             <h2>Top cetagory</h2>
             <div class="q-link">
               <a href="{% url 'index' %}">Home</a>
-              <a href="{% url 'owner' %}">Admin</a>
+              <a href="https://icy-island-0001ce200.5.azurestaticapps.net">Admin</a>
             </div>
           </div>
           <div class="news-signup">

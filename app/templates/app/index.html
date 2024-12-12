@@ -7,17 +7,17 @@
           <div class="search-bar">
             <input type="text" placeholder="Search" />
             <a href="{% url 'search' %}" class="animated-search" onclick="searchbar()">
-              <i class="uil uil-search"></i>  
+              <i class="uil uil-search"></i>
             </a>
-              
+
           </div>
           <div class="typo">
             {% if website_info.title %}
             <h1 class="title">{{website_info.title}}</h1>
             {% else %}
-            <h1 class="title">Super blog</h1>
+            <h1 class="title">Techxico</h1>
             {% endif %}
-            
+
             {% if website_info.description %}
             <p>
               {{website_info.description}}
@@ -33,7 +33,7 @@
             <form method="POST">
               {% csrf_token %}
               {{subscribe_form}}
-              <button class="btn btn-primary">Subscribe</button>            
+              <button class="btn btn-primary">Subscribe</button>
             </form>
             {% endif %}
             {% if subscribe_successful %}
@@ -76,7 +76,7 @@
       <div class="container">
         <h1 class="sec-title">Top blogs</h1>
         <div class="grid-3">
-          
+
           {% for post in top_posts %}
           <!-- card -->
           <a href="{% url 'post_page' post.slug %}">
