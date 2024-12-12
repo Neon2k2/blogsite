@@ -1,15 +1,20 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
+#use ssl redirect
+SECURE_SSL_REDIRECT = True
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5%np)%k&95mjqyz@d)jmh7ttgs%kvsuxt#sn)&v2vnc7rubg(q'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DJANGO_DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -26,6 +31,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,14 +60,33 @@ TEMPLATES = [
     },
 ]
 
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
+
+
 WSGI_APPLICATION = 'blogapp.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-from dotenv import load_dotenv
-load_dotenv()
+
 
 DATABASES = {
     'default': {
@@ -77,8 +103,12 @@ DATABASES = {
     }
 }
 
+# CORS allowed origins
 
-
+CORS_ALLOWED_ORIGINS = [
+    "https://techxico.azurewebsites.net",
+    "http://localhost:8000",
+]
 
 
 
@@ -122,6 +152,11 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'upload'
 LOGIN_REDIRECT_URL = '/'
+
+# The directory where your static files will be stored
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# Whitenoise for compressed static files
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
